@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'electric.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ganadodb',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'NAME': 'teslodb_y2a9',
+        'USER': 'teslodb_y2a9_user',
+        'PASSWORD': 'RBn1JeTvCi4GiCOwKTXjTQJiPvydvjAc',
+        'HOST': 'postgresql://teslodb_y2a9_user:RBn1JeTvCi4GiCOwKTXjTQJiPvydvjAc@dpg-cvld7f9r0fns738d493g-a/teslodb_y2a9',
         'PORT': '5432',
     }
 }
