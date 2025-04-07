@@ -10,7 +10,6 @@ __pycache__/
 # Archivos de Django
 db.sqlite3
 *.log
-staticfiles/
 media/
 
 # Archivos del sistema
