@@ -68,7 +68,7 @@ DATABASES = {
         'NAME': 'teslodb_y2a9',
         'USER': 'teslodb_y2a9_user',
         'PASSWORD': 'RBn1JeTvCi4GiCOwKTXjTQJiPvydvjAc',
-        'HOST': 'dpg-cvld7f9r0fns738d493g-a',
+        'HOST': 'dpg-cvld7f9r0fns738d493g-a.oregon-postgres.render.com',
         'PORT': '5432',
     }
 }
