@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: gestion-de-ganados-backend
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn electric.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: electric.settings
+      - key: SECRET_KEY
+        value: 0qQyTZlwxXM6-9h67bNWIiEUuetIEjOEnGOtRHamwCRBFtzyzxu-OFJBinmBqjiHfFk
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
