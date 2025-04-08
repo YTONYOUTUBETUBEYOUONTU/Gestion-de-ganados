@@ -90,7 +90,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://tu-app.render.com"  # reemplaza con tu dominio Vue en producción si ya lo tienes
+    "*",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
