@@ -3,16 +3,12 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Clave secreta directa
-SECRET_KEY = '0qQyTZlwxXM6-9h67bNWIiEUuetIEjOEnGOtRHamwCRBFtzyzxu-OFJBinmBqjiHfFk'  # Usa tu clave generada
+SECRET_KEY = '0qQyTZlwxXM6-9h67bNWIiEUuetIEjOEnGOtRHamwCRBFtzyzxu-OFJBinmBqjiHfFk'
 
-# Desactiva modo DEBUG para producción
 DEBUG = False
 
-# Permite todos los subdominios de Render
 ALLOWED_HOSTS = ['.onrender.com']
 
-# Aplicaciones instaladas
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -22,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'gestion',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -33,6 +30,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -61,7 +59,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'electric.wsgi.application'
 
-# Base de datos para producción (Render - PostgreSQL)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -74,18 +71,10 @@ DATABASES = {
 }
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 LANGUAGE_CODE = 'en-us'
@@ -93,11 +82,15 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Archivos estáticos para producción
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Habilita almacenamiento de archivos estáticos
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://tu-app.render.com"  # reemplaza con tu dominio Vue en producción si ya lo tienes
+]
+
+CORS_ALLOW_CREDENTIALS = True
